@@ -8,8 +8,8 @@
 
 
 $mysql_host= "localhost";
-$mysql_login = "syanhnet_bhs";
-$mysql_password = "nZ.Q;?)o,43*";
+$mysql_login = "";
+$mysql_password = "";
 $my_database = "syanhnet_dar";
 $link = mysql_connect("$mysql_host", "$mysql_login", "$mysql_password")
 or die ("Could not connect to MySQL");
