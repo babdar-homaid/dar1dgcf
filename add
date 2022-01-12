@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="cood.js"></script>
+<link href="s.css" rel="stylesheet" type="text/css" />
+
+</head>
+<?php
+require_once ('login.php');
+require_once ('config.php');
+$card=@$_GET[id];
+$School=@$_GET[School];
+$Today=@$_GET[Today];
+$Branches=@$_GET[Branches];
+$years=@$_GET[years];
+$dl=@$_GET[dl];
+ $query_5 = "  SELECT * FROM `Students` WHERE card = $card ";
+$result_5 = mysql_query ($query_5)
+
+  or die ("Query failed");
+
+$line_5 = mysql_fetch_object($result_5);
+
+   $query_55 = "  SELECT * FROM `Teacher` WHERE card = '$line_5->Teacher' ";
+$result_55 = mysql_query ($query_55)
+
+  or die ("Query failed");
+
+$line_55 = mysql_fetch_object($result_55);
+
+ 	echo "<body >
+<div id='divvvv'>تسجيل إختبار للطالب : $line_5->name</div>
+<br/> 	
+";
+
+echo "
+ <form id='myform5' class='out'>
+<input type='hidden' name='name' value='$line_5->name'/>
+<input type='hidden' name='card'  value='$line_5->card'/>
+<input type='hidden' name='Branches'  value='$Branches'/>
+<input type='hidden' name='Chapter1'  value='$Today'/>
+<input type='hidden' name='school'  value='$School'/>
+<input type='hidden' name='years'  value='$years'/>
+<input type='hidden' name='teacher'  value='$line_55->name'/>
+<input type='' name='dll'  value='$dl'/>
+
+
+
+
+ ";
+?>
+
+<br />
+الدرجة
+<br />
+
+<input type='text' name='Chapter2' />
+<br />
+<input id='button5' type='button'  value='goo' />
+
+
+  <div id ='lo'></div>
+
+
+</form>
+
+
+</body>
+</html>

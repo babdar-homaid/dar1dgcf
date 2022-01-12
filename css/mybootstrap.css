@@ -1,0 +1,48 @@
+@charset "UTF-8";
+/* CSS Document */
+@import url(http://fonts.googleapis.com/earlyaccess/droidarabickufi.css);
+body{
+	font-weight: 700;
+	font-size: 16px;
+	font-weight: 24px;
+	color: #383838;
+font-family: 'Droid Arabic Kufi', sans-serif;
+
+}
+p,a,h1,h3,h4{
+	font-family: 'Droid Arabic Kufi', sans-serif;
+font-weight: 700;
+	font-size: 14px;
+	font-weight: 24px;
+	color: #383838;
+}
+input,select,button,textarea
+{
+font-weight: 700;
+	font-size: 14px;
+	font-weight: 24px;
+	color: #383838;
+	font-family: 'Droid Arabic Kufi', sans-serif;
+ }
+
+#hed{
+display: none;
+	
+}
+
+@media (max-width: 979px) {
+#max {display: none;}
+#hed{ display: inline;
+}
+}
+@media (max-width: 767px) {
+#max {display: none;}
+#hed{ display: inline;
+}
+}
+
+@media (max-width: 320px) {
+#max {display: none;}
+#hed{ display: inline;
+}
+}
