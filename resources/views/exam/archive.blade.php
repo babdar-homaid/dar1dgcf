@@ -1,0 +1,5 @@
+
+@livewire('archives')
+@livewireScripts
+
+

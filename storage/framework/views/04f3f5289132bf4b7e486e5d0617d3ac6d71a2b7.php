@@ -1,0 +1,128 @@
+<?php $__env->startSection('content'); ?>
+<?php $__env->startSection('title'); ?>
+ -  كشف درجات الفصل الثاني
+<?php $__env->stopSection(); ?>
+
+
+<div class="container">
+<div class="row justify-content-center">
+<div class="col-md-10">
+<div class="card">
+<div   id ='font_news' class="card-header">  كشف درجات الفصل الثاني </div>
+<br>
+<div class="row d-flex justify-content-center">
+    <div class="col-sm-12 col-md-4"> <a href="/student/first/<?php echo e($User->Student_ID); ?>"><button type="button " class="btn btn-outline-success col-sm-12 ">درجات الفصل الأول</button></a></div>
+        <div class="col-sm-3 col-md-4"><a href="/student/second/<?php echo e($User->Student_ID); ?>"> <button type="button " class="btn btn-outline-success col-sm-12 ">درجات الفصل الثاني</button></a></div>
+     <div class="col-sm-3 col-md-4"> <a href="/exam/3"><button type="button " class="btn btn-outline-success col-sm-12 ">درجات الدور الثاني</button></a></div>
+</div>
+<hr>
+<table class="table">
+    <thead>
+    <thead>
+        <tr>
+            <th>الاسم</th>
+            <th>الجنسية</th>
+            <th>الصف</th>
+            <th>الحالة</th>
+        </tr>
+    </thead>
+    <tbody >
+
+
+            <tr >
+                <td><?php echo e($User->Name); ?></td>
+                <td><?php echo e($User->Nationality); ?></td>
+                <td><?php echo e($User->Class); ?></td>
+                 <td><?php echo e($User->Status); ?></td>
+
+
+
+            </tr>
+
+
+    </tbody>
+</table>
+<div class="card-body">
+    <table class="table table-bordered">
+        <tr>
+        <td>مسلسل</td>
+            <td>المادة</td>
+            <td>النهائية<br> الكبرى</td>
+            <td>النهائية<br> الصغرى</td>
+            <td>الدرجة</td>
+                </tr>
+                    
+
+  <?php if($sum=0): ?><?php endif; ?>
+  <?php if($add=0): ?><?php endif; ?>
+  <?php if($Item_High=0): ?><?php endif; ?>
+  <?php if($Item_Low=0): ?><?php endif; ?>
+  <?php if($Chapter_Degree=0): ?><?php endif; ?>
+
+
+<?php $__currentLoopData = $collection; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+
+<?php if($sum++): ?><?php endif; ?>
+<?php if($item->Chapter_Degree_2+$item->Chapter_Degree_1< $item->Item_Low_Degree_2): ?>
+<?php echo e($item->Item_Name); ?>
+
+<?php if($if=1): ?><?php endif; ?>
+
+
+<?php endif; ?>
+
+
+
+
+            <td><?php echo e($sum); ?> </td>
+            <td><?php echo e($item->Item_Name); ?></td>
+          <td><?php echo e($item->Item_High_Degree_2); ?></td>
+            <td><?php echo e($item->Item_Low_Degree_2); ?></td>
+             <td>
+                <?php if($item->Chapter_Degree_2 +$item->Chapter_Degree_1 < $item->Item_Low_Degree_1 and $item->Absence_Kind_Id==0): ?>
+                <div style=" color:red;"> <?php echo e($item->Chapter_Degree_2 +$item->Chapter_Degree_1); ?></div>
+                <?php elseif($item->Absence_Kind_Id ==8 or $item->Absence_Kind_Id==9): ?>
+                <div style=" color:red;">غائب</div>
+                <?php else: ?>
+                <?php echo e($item->Chapter_Degree_2 + $item->Chapter_Degree_1); ?>
+
+                <?php endif; ?>
+             </td>
+            
+                </tr></div>
+
+
+
+
+        <tr>
+            <?php if($Item_High+=$item->Item_High_Degree_2): ?><?php endif; ?>
+            <?php if($Item_Low+=$item->Item_Low_Degree_2): ?><?php endif; ?>
+            <?php if($Chapter_Degree+=$item->Chapter_Degree_2+$item->Chapter_Degree_1 ): ?><?php endif; ?>
+            <?php if($item->Chapter_Degree_2+$item->Chapter_Degree_1 < $item->Item_Low_Degree_1): ?>
+            <?php if($add++): ?><?php endif; ?>
+            <?php endif; ?>
+
+
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
+            <td colspan='2'>المجموع العام للدرجات</td>
+            <td> <?php echo e($Item_High); ?></td>
+            <td><?php echo e($Item_Low); ?></td>
+            <td> <?php echo e($Chapter_Degree); ?></td>
+            
+                </tr>
+
+     </table>
+    <?php if($add>0): ?> عدد مواد الرسوب <?php echo e($add); ?><?php endif; ?>
+
+
+
+
+</div>
+</div>
+</div>
+</div>
+
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /Users/bndralsymy/Desktop/up/dar/resources/views/exam/Chapter_second_Student.blade.php ENDPATH**/ ?>
